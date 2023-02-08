@@ -1,6 +1,6 @@
-name: GitLab Runner Service
+name: GitLab Custom CICD
 description: 'Runs a gitlab runner'
-author: 'Ederson Brilhante'
+author: 'Metril'
 branding:
   icon: 'server'
   color: 'purple'
