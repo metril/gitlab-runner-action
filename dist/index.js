@@ -12,7 +12,7 @@ const path = __nccwpck_require__(622);
 async function registerRunnerCmd() {
   let cmdArgs = [];
   cmdArgs.push(`--rm`)
-  cmdArgs.push(`--network host`)
+  cmdArgs.push(`--network`, `host`)
   cmdArgs.push(`-v`, `/srv/gitlab-runner/config:/etc/gitlab-runner`)
   cmdArgs.push(`gitlab/gitlab-runner`)
   cmdArgs.push(`register`)
