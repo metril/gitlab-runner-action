@@ -8,6 +8,9 @@ inputs:
   registration-token:
     description: 'Registration token'
     required: true
+  gitlab-url:
+    description: 'GitLab URL'
+    required: true
   name:
     description: 'Runner name'
     required: true
