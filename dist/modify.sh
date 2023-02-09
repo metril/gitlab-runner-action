@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo echo '  network_mode = "host"' >> /srv/gitlab-runner/config/config.toml
+echo '  network_mode = "host"' | sudo tee -a /srv/gitlab-runner/config/config.toml
