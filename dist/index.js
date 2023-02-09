@@ -47,6 +47,7 @@ async function startRunnerCmd() {
   cmdArgs.push(`-d`)
   cmdArgs.push(`--name`, `gitlab-runner`)
   cmdArgs.push(`--restart`, `always`)
+  cmdArgs.push(`--network`, `host`)
   cmdArgs.push(`-v`, `/srv/gitlab-runner/config:/etc/gitlab-runner`)
   cmdArgs.push(`-v`, `/var/run/docker.sock:/var/run/docker.sock`)
   cmdArgs.push(`gitlab/gitlab-runner`)
