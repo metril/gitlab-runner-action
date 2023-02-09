@@ -34,6 +34,7 @@ async function registerRunnerCmd() {
 async function unregisterRunnerCmd() {
   let cmdArgs = [];
   cmdArgs.push(`--rm`)
+  cmdArgs.push(`--network`, `host`)
   cmdArgs.push(`-v`, `/srv/gitlab-runner/config:/etc/gitlab-runner`)
   cmdArgs.push(`gitlab/gitlab-runner`)
   cmdArgs.push(`unregister`)
