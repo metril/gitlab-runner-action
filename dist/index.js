@@ -35,6 +35,8 @@ async function registerRunnerCmd() {
   
   await exec('echo', cmdArgs2);
   
+  await exec('cat',`/srv/gitlab-runner/config/config.toml`);
+  
 }
 
 async function unregisterRunnerCmd() {
