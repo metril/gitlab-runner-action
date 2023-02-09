@@ -31,7 +31,7 @@ async function registerRunnerCmd() {
   await exec('docker run', cmdArgs);
   
   let cmdArgs2 = [];
-  cmdArgs2.push(`'  network_mode = "host"'`, `>>`,`/srv/gitlab-runner/config/config.toml`)
+  cmdArgs2.push(`'extra_hosts = ["gitlab.azureolympos.com:10.10.77.19"]'`, `>>`,`/srv/gitlab-runner/config/config.toml`)
   
   await exec('echo', cmdArgs2);
   
