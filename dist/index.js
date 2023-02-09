@@ -16,7 +16,6 @@ async function registerRunnerCmd() {
   cmdArgs.push(`-v`, `/srv/gitlab-runner/config:/etc/gitlab-runner`)
   cmdArgs.push(`gitlab/gitlab-runner`)
   cmdArgs.push(`register`)
-  cmdArgs.push(`--template-config`, __nccwpck_require__.ab + "config.toml")
   cmdArgs.push(`--non-interactive`)
   cmdArgs.push(`--executor`, `docker`)
   cmdArgs.push(`--docker-image`, core.getInput('docker-image'))
@@ -30,6 +29,12 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--run-untagged="${core.getInput('run-untagged')}"`)
 
   await exec('docker run', cmdArgs);
+  
+  let cmdArgs = [];
+  cmdArgs.push(`  network_mode = "host"`, `>>`,`/srv/gitlab-runner/config:/etc/gitlab-runner`)
+  
+  await exec('echo', cmdArgs);
+  
 }
 
 async function unregisterRunnerCmd() {
