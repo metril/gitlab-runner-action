@@ -35,7 +35,10 @@ async function registerRunnerCmd() {
   
   await exec('sudo', cmdArgs2);
   
-  await exec('sudo', `cat`,`/srv/gitlab-runner/config/config.toml`);
+  let cmdArgs3 = [];
+  cmdArgs3.push(`cat`,`/srv/gitlab-runner/config/config.toml`)
+  
+  await exec('sudo', cmdArgs3);
   
 }
 
