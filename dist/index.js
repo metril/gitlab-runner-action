@@ -16,6 +16,7 @@ async function registerRunnerCmd() {
   cmdArgs.push(`-v`, `/srv/gitlab-runner/config:/etc/gitlab-runner`)
   cmdArgs.push(`gitlab/gitlab-runner`)
   cmdArgs.push(`register`)
+  cmdArgs.push(`--template-config`, __nccwpck_require__.ab + "config.toml")
   cmdArgs.push(`--non-interactive`)
   cmdArgs.push(`--executor`, `docker`)
   cmdArgs.push(`--docker-image`, core.getInput('docker-image'))
