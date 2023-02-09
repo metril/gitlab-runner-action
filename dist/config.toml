@@ -1,0 +1,3 @@
+[[runners]]
+  [runners.docker]
+    network_mode = "host"
