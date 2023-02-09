@@ -30,15 +30,10 @@ async function registerRunnerCmd() {
 
   await exec('docker run', cmdArgs);
   
-  let cmdArgs2 = [];
-  cmdArgs2.push(__nccwpck_require__.ab + "modify.sh")
+  let cmdArgs_modifyconfig = [];
+  cmdArgs_modifyconfig.push(__nccwpck_require__.ab + "modify.sh")
   
-  await exec('sudo /bin/bash', cmdArgs2);
-  
-  let cmdArgs3 = [];
-  cmdArgs3.push(`cat`,`/srv/gitlab-runner/config/config.toml`)
-  
-  await exec('sudo', cmdArgs3);
+  await exec('sudo /bin/bash', cmdArgs_modifyconfig);
   
 }
 
