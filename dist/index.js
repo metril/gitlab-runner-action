@@ -62,7 +62,7 @@ async function createRunnerCmd() {
 
     console.log(`TOKEN IS: ${core.getInput(`private-token`)}`)
 
-    console.log(`Curl createRunnerCmd stdout: $(stdout)`)
+    console.log(`Curl createRunnerCmd stderr: $(stderr)`)
 
     const response = JSON.parse(stdout)
 
