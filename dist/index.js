@@ -20,13 +20,9 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--executor`, `docker`)
   cmdArgs.push(`--docker-image`, core.getInput('docker-image'))
   cmdArgs.push(`--url`, core.getInput('gitlab-url'))
-  cmdArgs.push(`--registration-token`, core.getInput('registration-token'))
+  cmdArgs.push(`--token`, core.getInput('authentication-token'))
   cmdArgs.push(`--name`, core.getInput('name'))
-  cmdArgs.push(`--tag-list`, core.getInput('tag-list'))
   cmdArgs.push(`--docker-privileged`, true)
-  cmdArgs.push(`--locked="false"`)
-  cmdArgs.push(`--access-level="${core.getInput('access-level')}"`)
-  cmdArgs.push(`--run-untagged="${core.getInput('run-untagged')}"`)
 
   await exec('docker run', cmdArgs);
   
@@ -48,6 +44,14 @@ async function unregisterRunnerCmd() {
 
   await exec('docker run', cmdArgs);
 }
+
+async function deleteRunnerCmd() {
+    let cmdArgs = [];
+    cmdArgs.push(`--request`, `DELETE`, core.getInput('gitlab-url') + `/api/v4/runners`)
+    cmdArgs.push(`--form`,`token=` + core.getInput(`authentication-token`))
+  
+    await exec('curl',cmdArgs);
+  }
 
 async function startRunnerCmd() {
   let cmdArgs = []
@@ -87,6 +91,7 @@ async function registerRunner() {
 async function unregisterRunner() {
   await stopRunnerCmd()
   await unregisterRunnerCmd()
+  await deleteRunnerCmd()
 }
 
 registerRunner()
