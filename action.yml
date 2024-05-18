@@ -6,7 +6,7 @@ branding:
   color: 'purple'
 inputs:
   registration-token:
-    description: 'Private token'
+    description: 'Registration token'
     required: true
   project-id:
     description: 'Project ID'

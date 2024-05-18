@@ -22,7 +22,7 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--executor`, `docker`)
   cmdArgs.push(`--docker-image`, core.getInput('docker-image'))
   cmdArgs.push(`--url`, core.getInput('gitlab-url'))
-  cmdArgs.push(`--token`, global.token)
+  cmdArgs.push(`--token`, core.getInput('registration-token'))
   cmdArgs.push(`--name`, core.getInput('name'))
   cmdArgs.push(`--docker-privileged`, true)
 
