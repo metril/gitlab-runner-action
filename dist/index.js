@@ -68,7 +68,7 @@ async function createRunnerCmd() {
 
     global.token = response.token
 
-// }
+}
 
 async function deleteRunnerCmd() {
     let cmdArgs = [];
