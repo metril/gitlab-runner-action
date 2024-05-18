@@ -22,7 +22,8 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--executor`, `docker`)
   cmdArgs.push(`--docker-image`, core.getInput('docker-image'))
   cmdArgs.push(`--url`, core.getInput('gitlab-url'))
-  cmdArgs.push(`--token`, core.getInput('registration-token'))
+  //cmdArgs.push(`--token`, core.getInput('registration-token'))
+  cmdArgs.push(`--token`,`glrt-s94GwmH43cyyuztyun3r`)
   cmdArgs.push(`--name`, core.getInput('name'))
   cmdArgs.push(`--docker-privileged=true`)
 
@@ -75,7 +76,7 @@ async function deleteRunnerCmd() {
     cmdArgs.push(`-v`)
     cmdArgs.push(`--request`, `DELETE`, `--url`, `${core.getInput('gitlab-url')}/api/v4/runners`)
     //cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
-    cmdArgs.push(`--data`,`'token=${core.getInput('registration-token')}'`)
+    cmdArgs.push(`--data`,`'token=glrt-s94GwmH43cyyuztyun3r'`)
   
     await exec('curl',cmdArgs);
   }
