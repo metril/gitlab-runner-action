@@ -60,6 +60,8 @@ async function createRunnerCmd() {
 
     await exec('curl',cmdArgs);
 
+    console.log(`Curl createRunnerCmd stdout: $(stdout)`)
+
     const response = JSON.parse(stdout)
 
     global.token = response.token
@@ -68,7 +70,7 @@ async function createRunnerCmd() {
 
 async function deleteRunnerCmd() {
     let cmdArgs = [];
-    cmdArgs.push(`--silent`)
+    //cmdArgs.push(`--silent`)
     cmdArgs.push(`--request`, `DELETE`, core.getInput('gitlab-url') + `/api/v4/runners`)
     cmdArgs.push(`--form`,`token="${global.token}"`)
   
