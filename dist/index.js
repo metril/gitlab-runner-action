@@ -52,11 +52,11 @@ async function createRunnerCmd() {
     cmdArgs.push(`--request`, `POST`, `--url`, `${core.getInput('gitlab-url')}/api/v4/runners`)
     cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
     cmdArgs.push(`--form`,`runner_type=project_type`)
-    cmdArgs.push(`--form`,`project_id="${core.getInput(`project-id`)}"`)
+    cmdArgs.push(`--form`,`project_id=${core.getInput(`project-id`)}`)
     cmdArgs.push(`--form`,`tag_list="${core.getInput(`tag-list`)}"`)
-    cmdArgs.push(`--form`,`locked=false`)
-    cmdArgs.push(`--form`,`access-level="${core.getInput('access-level')}"`)
-    cmdArgs.push(`--form`,`run-untagged="${core.getInput('run-untagged')}"`)
+    //cmdArgs.push(`--form`,`locked=false`)
+    //cmdArgs.push(`--form`,`access-level="${core.getInput('access-level')}"`)
+    //cmdArgs.push(`--form`,`run-untagged="${core.getInput('run-untagged')}"`)
 
     await exec('curl',cmdArgs);
 
