@@ -20,7 +20,7 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--executor`, `docker`)
   cmdArgs.push(`--docker-image`, core.getInput('docker-image'))
   cmdArgs.push(`--url`, core.getInput('gitlab-url'))
-  cmdArgs.push(`--token`, core.getInput('authentication-token'))
+  cmdArgs.push(`--token`, global.token)
   cmdArgs.push(`--name`, core.getInput('name'))
   cmdArgs.push(`--docker-privileged`, true)
 
@@ -43,12 +43,30 @@ async function unregisterRunnerCmd() {
   cmdArgs.push(`--name`, core.getInput('name'))
 
   await exec('docker run', cmdArgs);
+
+}
+
+async function createRunnerCmd() {
+    let cmdArgs = [];
+    cmdArgs.push(`--silent`)
+    cmdArgs.push(`--request`, `POST`, core.getInput('gitlab-url') + `/api/v4/runners`)
+    cmdArgs.push(`--header`,`PRIVATE-TOKEN: ` + core.getInput(`private-token`))
+    cmdArgs.push(`--data`,`runner_type=project_type`)
+    cmdArgs.push(`--data`,`project_id="${core.getInput(`project-id`)}"`)
+    cmdArgs.push(`--data`,`tag_list="${core.getInput(`tag-list`)}"`)
+    cmdArgs.push(`--data`,`locked=false`)
+    cmdArgs.push(`--data`,`access-level="${core.getInput('access-level')}"`)
+    cmdArgs.push(`--data`,`run-untagged="${core.getInput('run-untagged')}"`)
+
+    global.token = JSON.parse(await exec('curl',cmdArgs).stdout).token
+
 }
 
 async function deleteRunnerCmd() {
     let cmdArgs = [];
+    cmdArgs.push(`--silent`)
     cmdArgs.push(`--request`, `DELETE`, core.getInput('gitlab-url') + `/api/v4/runners`)
-    cmdArgs.push(`--form`,`token=` + core.getInput(`authentication-token`))
+    cmdArgs.push(`--form`,`token="${global.token}"`)
   
     await exec('curl',cmdArgs);
   }
@@ -80,6 +98,7 @@ async function checkJob(){
 
 async function registerRunner() {
   try{
+    await createRunnerCmd()
     await registerRunnerCmd()
     await startRunnerCmd()
     await checkJob()

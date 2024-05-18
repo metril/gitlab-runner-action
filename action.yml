@@ -5,8 +5,8 @@ branding:
   icon: 'server'
   color: 'purple'
 inputs:
-  authentication-token:
-    description: 'Authentication token'
+  private-token:
+    description: 'Private token'
     required: true
   gitlab-url:
     description: 'GitLab URL'
@@ -21,6 +21,14 @@ inputs:
     description: 'Docker image used by runner'
     required: false
     default: 'docker:19.03.12'
+  run-untagged:
+    description: "Parameter that allows or not to pick untagged jobs"
+    required: false
+    default: 'true'
+  access-level:
+    description: 'Parameter to create or not a protected runner'
+    required: false
+    default: "not_protected"
 runs:
   using: 'node12'
   main: 'dist/index.js'
