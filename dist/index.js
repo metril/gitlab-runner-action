@@ -60,9 +60,7 @@ async function createRunnerCmd() {
 
     await exec('curl',cmdArgs);
 
-    console.log(`TOKEN IS: ${core.getInput(`private-token`)}`)
-
-    console.log(`Curl createRunnerCmd stderr: $(stderr)`)
+    console.log(`Curl createRunnerCmd stderr: ${stdout}`)
 
     const response = JSON.parse(stdout)
 
