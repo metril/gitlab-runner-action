@@ -60,9 +60,11 @@ async function createRunnerCmd() {
     //cmdArgs.push(`--form`,`access-level="${core.getInput('access-level')}"`)
     //cmdArgs.push(`--form`,`run-untagged="${core.getInput('run-untagged')}"`)
 
+    console.log(`Curl createRunnerCmd: ${cmdArgs}`)
+
     await exec('curl',cmdArgs);
 
-    console.log(`Curl createRunnerCmd: ${cmdArgs}`)
+    
 
     const response = JSON.parse(stdout)
 
