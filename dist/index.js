@@ -49,7 +49,7 @@ async function unregisterRunnerCmd() {
 async function createRunnerCmd() {
     let cmdArgs = [];
     //cmdArgs.push(`--silent`)
-    cmdArgs.push(`--http1.1`, `--request`, `POST`, `--url`, core.getInput('gitlab-url') + `/api/v4/runners`)
+    cmdArgs.push(`--request`, `POST`, `--url`, `"${core.getInput('gitlab-url')}/api/v4/runners"`)
     cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
     cmdArgs.push(`--form`,`runner_type=project_type`)
     cmdArgs.push(`--form`,`project_id="${core.getInput(`project-id`)}"`)
@@ -71,7 +71,7 @@ async function createRunnerCmd() {
 async function deleteRunnerCmd() {
     let cmdArgs = [];
     //cmdArgs.push(`--silent`)
-    cmdArgs.push(`--request`, `DELETE`, `--url`, core.getInput('gitlab-url') + `/api/v4/runners`)
+    cmdArgs.push(`--request`, `DELETE`, `--url`, `"${core.getInput('gitlab-url')}/api/v4/runners"`)
     cmdArgs.push(`--form`,`token="${global.token}"`)
   
     await exec('curl',cmdArgs);
