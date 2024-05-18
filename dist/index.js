@@ -117,7 +117,7 @@ async function registerRunner() {
 async function unregisterRunner() {
   await stopRunnerCmd()
   await unregisterRunnerCmd()
-  if (config.getInput('delete-runner') == "true") {
+  if (core.getInput('delete-runner') == "true") {
     await deleteRunnerCmd()
   }
 }
