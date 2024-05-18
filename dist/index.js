@@ -84,7 +84,6 @@ async function checkJob(){
 
 async function registerRunner() {
   try{
-    await createRunnerCmd()
     await registerRunnerCmd()
     await startRunnerCmd()
     await checkJob()
