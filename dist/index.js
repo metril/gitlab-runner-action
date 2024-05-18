@@ -50,7 +50,7 @@ async function createRunnerCmd() {
     let cmdArgs = [];
     //cmdArgs.push(`--silent`)
     cmdArgs.push(`--request`, `POST`, core.getInput('gitlab-url') + `/api/v4/runners`)
-    cmdArgs.push(`--header`,`PRIVATE-TOKEN: ` + core.getInput(`private-token`))
+    cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
     cmdArgs.push(`--data`,`runner_type=project_type`)
     cmdArgs.push(`--data`,`project_id="${core.getInput(`project-id`)}"`)
     cmdArgs.push(`--data`,`tag_list="${core.getInput(`tag-list`)}"`)
