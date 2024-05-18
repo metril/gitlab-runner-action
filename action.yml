@@ -8,6 +8,9 @@ inputs:
   private-token:
     description: 'Private token'
     required: true
+  project-id:
+    description: 'Project ID'
+    required: true
   gitlab-url:
     description: 'GitLab URL'
     required: true
