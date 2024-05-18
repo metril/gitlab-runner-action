@@ -24,7 +24,7 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--url`, core.getInput('gitlab-url'))
   cmdArgs.push(`--token`, core.getInput('registration-token'))
   cmdArgs.push(`--name`, core.getInput('name'))
-  cmdArgs.push(`--docker-privileged`, true)
+  cmdArgs.push(`--docker-privileged=true`)
 
   await exec('docker run', cmdArgs);
   
