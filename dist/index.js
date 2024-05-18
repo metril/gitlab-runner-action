@@ -50,7 +50,7 @@ async function unregisterRunnerCmd() {
 
 async function deleteRunnerCmd() {
     let cmdArgs = [];
-    cmdArgs.push(`-v`)
+    cmdArgs.push(`--silent`)
     cmdArgs.push(`--request`, `DELETE`, `--url`, `${core.getInput('gitlab-url')}/api/v4/runners`)
     cmdArgs.push(`--data`,`token=`+ core.getInput('authentication-token'))
   
