@@ -74,6 +74,7 @@ async function deleteRunnerCmd() {
     let cmdArgs = [];
     cmdArgs.push(`-v`)
     cmdArgs.push(`--request`, `DELETE`, `--url`, `${core.getInput('gitlab-url')}/api/v4/runners`)
+    cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
     cmdArgs.push(`--form`,`"token=${core.getInput('registration-token')}"`)
   
     await exec('curl',cmdArgs);

@@ -36,6 +36,9 @@ inputs:
     description: 'Delete runner configuration'
     required: false
     default: "false"
+  private-token:
+    description: 'Private token'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
