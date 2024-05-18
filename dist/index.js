@@ -1,3 +1,5 @@
+const { config } = require("process");
+
 module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
@@ -115,7 +117,9 @@ async function registerRunner() {
 async function unregisterRunner() {
   await stopRunnerCmd()
   await unregisterRunnerCmd()
-  await deleteRunnerCmd()
+  if (config.getInput('delete-runner') == "true") {
+    await deleteRunnerCmd()
+  }
 }
 
 registerRunner()
