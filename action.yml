@@ -32,6 +32,10 @@ inputs:
     description: 'Parameter to create or not a protected runner'
     required: false
     default: "not_protected"
+  delete-runner:
+    description: 'Delete runner configuration'
+    required: false
+    default: "false"
 runs:
   using: 'node12'
   main: 'dist/index.js'
