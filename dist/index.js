@@ -58,7 +58,11 @@ async function createRunnerCmd() {
     cmdArgs.push(`--data`,`access-level="${core.getInput('access-level')}"`)
     cmdArgs.push(`--data`,`run-untagged="${core.getInput('run-untagged')}"`)
 
-    global.token = JSON.parse(await exec('curl',cmdArgs).stdout).token
+    await exec('curl',cmdArgs);
+
+    const response = JSON.parse(stdout)
+
+    global.token = response.token
 
 }
 
