@@ -5,7 +5,7 @@ branding:
   icon: 'server'
   color: 'purple'
 inputs:
-  private-token:
+  registration-token:
     description: 'Private token'
     required: true
   project-id:
