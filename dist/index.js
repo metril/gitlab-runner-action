@@ -49,7 +49,7 @@ async function unregisterRunnerCmd() {
 async function createRunnerCmd() {
     let cmdArgs = [];
     cmdArgs.push(`-v`)
-    cmdArgs.push(`--http2-prior-knowledge`)
+    cmdArgs.push(`--http1.1`)
     cmdArgs.push(`--request`, `POST`, `--url`, `${core.getInput('gitlab-url')}/api/v4/runners`)
     cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
     cmdArgs.push(`--data`,`runner_type=project_type`)
