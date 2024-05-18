@@ -55,14 +55,14 @@ async function createRunnerCmd() {
     cmdArgs.push(`--data`,`runner_type=project_type`)
     cmdArgs.push(`--data`,`project_id=${core.getInput(`project-id`)}`)
     cmdArgs.push(`--data`,`tag_list=${core.getInput(`tag-list`)}`)
-    cmdArgs.push(`--header`,'"PRIVATE-TOKEN: ' + core.getInput(`private-token`) + '"')
+    //cmdArgs.push(`--header`,'"PRIVATE-TOKEN: ' + core.getInput(`private-token`) + '"')
     //cmdArgs.push(`--form`,`locked=false`)
     //cmdArgs.push(`--form`,`access-level="${core.getInput('access-level')}"`)
     //cmdArgs.push(`--form`,`run-untagged="${core.getInput('run-untagged')}"`)
 
     await exec('curl',cmdArgs);
 
-    console.log(`Curl createRunnerCmd stderr: ${stdout}`)
+    console.log(`Curl createRunnerCmd: ${cmdArgs}`)
 
     const response = JSON.parse(stdout)
 
