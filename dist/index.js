@@ -48,36 +48,11 @@ async function unregisterRunnerCmd() {
 
 }
 
-async function createRunnerCmd() {
-    let cmdArgs = [];
-    cmdArgs.push(`-v`)
-    cmdArgs.push(`--request`, `POST`, `--url`, `${core.getInput('gitlab-url')}/api/v4/user/runners`)
-    cmdArgs.push(`--data`,`runner_type=project_type`)
-    cmdArgs.push(`--data`,`project_id=` + core.getInput(`project-id`))
-    cmdArgs.push(`--data`,`tag_list=` + core.getInput(`tag-list`))
-    cmdArgs.push(`--header`,'"PRIVATE-TOKEN: glpat-oAuHYtx_9PYH1r8AFb32')
-    //cmdArgs.push(`--form`,`locked=false`)
-    //cmdArgs.push(`--form`,`access-level="${core.getInput('access-level')}"`)
-    //cmdArgs.push(`--form`,`run-untagged="${core.getInput('run-untagged')}"`)
-
-    console.log(`Curl createRunnerCmd: ${cmdArgs}`)
-
-    await exec('curl',cmdArgs);
-
-    
-
-    const response = JSON.parse(stdout)
-
-    global.token = response.token
-
-}
-
 async function deleteRunnerCmd() {
     let cmdArgs = [];
     cmdArgs.push(`-v`)
     cmdArgs.push(`--request`, `DELETE`, `--url`, `${core.getInput('gitlab-url')}/api/v4/runners`)
-    //cmdArgs.push(`--header`,`"PRIVATE-TOKEN: ${core.getInput(`private-token`)}"`)
-    cmdArgs.push(`--data`,`token=`+ core.getInput('registration-token'))
+    cmdArgs.push(`--data`,`token=`+ core.getInput('authentication-token'))
   
     await exec('curl',cmdArgs);
   }

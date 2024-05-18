@@ -5,11 +5,8 @@ branding:
   icon: 'server'
   color: 'purple'
 inputs:
-  registration-token:
-    description: 'Registration token'
-    required: true
-  project-id:
-    description: 'Project ID'
+  authentication-token:
+    description: 'Authentication token'
     required: true
   gitlab-url:
     description: 'GitLab URL'
@@ -17,28 +14,14 @@ inputs:
   name:
     description: 'Runner name'
     required: true
-  tag-list:
-    description: 'Tag list to bind with the runner'
-    required: true
   docker-image:
     description: 'Docker image used by runner'
     required: false
     default: 'docker:19.03.12'
-  run-untagged:
-    description: "Parameter that allows or not to pick untagged jobs"
-    required: false
-    default: 'true'
-  access-level:
-    description: 'Parameter to create or not a protected runner'
-    required: false
-    default: "not_protected"
   delete-runner:
     description: 'Delete runner configuration'
     required: false
     default: "false"
-  private-token:
-    description: 'Private token'
-    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
